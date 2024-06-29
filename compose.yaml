@@ -1,0 +1,19 @@
+services:
+  app:
+    entrypoint: npm run dev -- --host 0.0.0.0
+    build:
+      context: .
+    develop:
+      watch:
+        - path: ./src
+          target: /usr/src/app/src
+          action: sync
+        - path: ./public
+          target: /usr/src/app/public
+          action: sync
+    environment:
+      NODE_ENV: dev
+    ports:
+      - 5050:5050
+      - 35729:35729
+      - 8080:5000
